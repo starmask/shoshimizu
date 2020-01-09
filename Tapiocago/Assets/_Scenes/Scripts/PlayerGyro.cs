@@ -19,8 +19,7 @@ public class PlayerGyro : MonoBehaviour
     void FixedUpdate()
     {
 
-        //float moveH = Input.gyro.userAcceleration.x;
-        //float moveV = Input.gyro.userAcceleration.y;
+        //加速度センサによるボールの制御
         float moveH = Input.acceleration.x;
         float moveV = Input.acceleration.y;
                      
@@ -28,23 +27,7 @@ public class PlayerGyro : MonoBehaviour
                      
         rb.AddForce(movement * speed * 0.8f);
         
-        /*
-        var dir = Vector3.zero;
-
-        // ターゲット端末の縦横の表示に合わせてremapする
-        dir.x = Input.acceleration.x;
-        dir.z = Input.acceleration.y;
-
-        // clamp acceleration vector to the unit sphere
-        if (dir.sqrMagnitude > 1)
-            dir.Normalize();
-
-        // Make it move 10 meters per second instead of 10 meters per frame...
-        dir *= Time.deltaTime;
-
-        // Move object
-        transform.Translate(dir * speed);
-        */
+       
         }
 
     }

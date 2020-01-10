@@ -24,12 +24,12 @@ public class LoadScene : MonoBehaviour
         step_time += Time.deltaTime;
 
         // 1秒後に画面遷移（scene2へ移動）
-        if (step_time >= 5.0f)
+        if (step_time >= 8.0f)
         {
             SceneManager.LoadScene("field");
         }
 
-        _hp = step_time/5.0f;
+        _hp = step_time/8.0f;
         if (_hp > 1)
         {
             // 最大を超えたら0に戻す

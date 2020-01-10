@@ -11,7 +11,7 @@ public class MilkTea : MonoBehaviour
     {
         GetComponent<AudioSource>().Play();
     }
-
+    //入れた後の判定
     void OnTriggerEnter()
     {
         float currentScore = float.Parse(score.GetComponent<GUIText>().text) + 22.4f;

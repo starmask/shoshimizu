@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scene1.unity
+    path: 
     guid: a4cdfd904131b4af1aab5dc3142b8ae3
   - enabled: 1
     path: Assets/_Scenes/load.unity
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TapiBattle.unity
     guid: 95de07ccfaf6b4418bfa5b6a102b2da2
+  - enabled: 1
+    path: Assets/_Scenes/stop.unity
+    guid: c21e740f992ed384389bbd5f317fb038
   m_configObjects: {}

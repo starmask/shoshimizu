@@ -25,17 +25,17 @@ public class StopRotate : MonoBehaviour
             {
                 transform.Rotate(new Vector3(0, 0, 20));
             }
-            if (80<=i && i < 110)
+            if (80<=i && i < 100)
             {
                 transform.Rotate(new Vector3(0, 0, 10));
             }
-            if (110 <= i)
+            if (100 <= i)
             {
                 transform.Rotate(new Vector3(0, 0, 5));
             }
             i += 1;
         }
-        if (i >= 160)
+        if (i >= 164)
         {
             i = 0;
             flag = false;

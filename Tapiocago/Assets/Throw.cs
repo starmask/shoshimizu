@@ -22,8 +22,8 @@ public class Throw : MonoBehaviour
     public GameObject arrow2;
     public GameObject cup;
 
-    private float arrowSpeed = 0.2f; //Difficulty
-    private float turnSpeed = 0.2f;
+    private float arrowSpeed = 0.2f; //Speed
+    private float turnSpeed = 0.2f; //方向スピード
     private bool right = true;
     private bool up = true;
     private bool cright=true;
@@ -38,6 +38,7 @@ public class Throw : MonoBehaviour
     }
     void FixedUpdate()
     {   
+        //タピオカコップの動き制御
         if (cup.transform.position.x < 2f && cright)
         {
             cup.transform.position += new Vector3(0.08f,0, 0);
@@ -55,7 +56,7 @@ public class Throw : MonoBehaviour
             cright = true;
         }
 
-        /* Move Power Meter Arrow */ 
+        /* 強さを決める制御 */ 
         if(!power_decided){
         if (arrow.transform.position.y < 6.1f && up)
         {
@@ -74,13 +75,13 @@ public class Throw : MonoBehaviour
             up = true;
         }
         }
-        /* Shoot ball on Tap */
+        
 
         if(Input.GetButtonUp("Fire1") &&!power_decided && !thrown && availableShots > 0)
         {
             power_decided = true;
         }
-
+        /* 左右方向を決める制御 */
         if(power_decided&&!thrown){
             if (arrow2.transform.position.x < 4.7f && right)
             {
@@ -99,6 +100,7 @@ public class Throw : MonoBehaviour
                 right = true;
             }
         }
+        //発射し、次のタピオカを用意する
         if(Input.GetButtonDown("Fire1") &&power_decided && !thrown && availableShots > 0)
         {
             thrown = true;

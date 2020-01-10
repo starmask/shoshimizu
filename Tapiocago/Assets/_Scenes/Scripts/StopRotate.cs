@@ -31,7 +31,7 @@ public class StopRotate : MonoBehaviour
             }
             i += 1;
         }
-        if (i >= 133)
+        if (i >= 131)
         {
             i = 0;
             flag = false;

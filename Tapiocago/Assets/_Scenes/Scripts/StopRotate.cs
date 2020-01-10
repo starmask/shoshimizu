@@ -19,7 +19,7 @@ public class StopRotate : MonoBehaviour
         {
             if (i < 40)
             {
-                transform.Rotate(new Vector3(0, 0, 35));
+                transform.Rotate(new Vector3(0, 0, 30));
             }
             if (40 <= i && i < 80)
             {

@@ -33,15 +33,15 @@ public class Throw : MonoBehaviour
     private bool up = true;
     private bool cright=true;
     public GameObject gameOver;
-    private float scalef = 0.002f;
+    private float scalef = 0.0025f;
 
     // Use this for initialization
     void Start()
     {
         /* Increase Gravity */
         Physics.gravity = new Vector3(0, -20, 0);
-        arrowSpeed = Random.Range(0.15f, 0.25f);
-        turnSpeed = Random.Range(0.15f, 0.25f);
+        arrowSpeed = Random.Range(0.15f, 0.2f);
+        turnSpeed = Random.Range(0.15f, 0.2f);
         availableShots = Random.Range(3, 8);
         availableShotsGO.GetComponent<GUIText>().text = availableShots.ToString();
 

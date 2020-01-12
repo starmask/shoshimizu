@@ -893,8 +893,11 @@ MonoBehaviour:
   arrow2: {fileID: 131717934}
   cup: {fileID: 869676485}
   straw: {fileID: 1536393876}
+  rstraw: {fileID: 1703498252}
   eye1: {fileID: 397126386}
   eye2: {fileID: 1675014758}
+  brow1: {fileID: 1141346996}
+  brow2: {fileID: 1822942359}
   gameOver: {fileID: 100000, guid: f99e8ae5bfb7c4d4b9c451c416564546, type: 3}
 --- !u!1 &397126386
 GameObject:

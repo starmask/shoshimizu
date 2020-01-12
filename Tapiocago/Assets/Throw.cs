@@ -25,6 +25,9 @@ public class Throw : MonoBehaviour
     public GameObject rstraw;
     public GameObject eye1;
     public GameObject eye2;
+    public GameObject brow1;
+    public GameObject brow2;
+
 
     private float arrowSpeed = 0.2f; //Speed
     private float turnSpeed = 0.2f; //方向スピード
@@ -36,11 +39,11 @@ public class Throw : MonoBehaviour
     public GameObject gameOver;
     private float scalef = 0.0025f;
 
-
+    //開始色と終了色
     Color colorStart = Color.red;
     Color colorEnd = Color.blue;
     float duration = 1.0f;
-    Renderer rend;
+    Renderer rend,rend2,rend3;
 
 
     // Use this for initialization
@@ -53,13 +56,20 @@ public class Throw : MonoBehaviour
         availableShots = Random.Range(3, 8);
         availableShotsGO.GetComponent<GUIText>().text = availableShots.ToString();
 
+        //renderを取得
         rend = rstraw.GetComponent<Renderer>();
+        rend2 = brow1.GetComponent<Renderer>();
+        rend3 = brow2.GetComponent<Renderer>();
     }
     void FixedUpdate()
     {   
-
+    　　
+      // fading 効果を実現する
        float lerp = Mathf.PingPong(Time.time, duration) / duration;
        rend.material.color = Color.Lerp(colorStart, colorEnd, lerp);
+       rend2.material.color = Color.Lerp(colorStart, colorEnd, lerp);
+       rend3.material.color = Color.Lerp(colorStart, colorEnd, lerp);
+
         // animation of tapioca cups
         if(cup.transform.position.x>-6f&&cright)
         {
@@ -174,7 +184,7 @@ public class Throw : MonoBehaviour
             Destroy(ballClone);
             thrown = false;
             power_decided = false;
-            throwSpeed = new Vector3(0, 26, 40);//Reset perfect shot variable
+            throwSpeed = new Vector3(0, 26, 40);　//最適スピード
 
             /* Check if out of shots */
                 

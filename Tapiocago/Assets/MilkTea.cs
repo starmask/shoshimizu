@@ -16,6 +16,7 @@ public class MilkTea : MonoBehaviour
     {
         float currentScore = float.Parse(score.GetComponent<GUIText>().text) + 18.4f;
         int numball = int.Parse(num.GetComponent<GUIText>().text) + 1;
+        //変数を次のシーンに渡すために保存する
         PlayerPrefs.SetFloat("score", currentScore); 
         PlayerPrefs.SetInt("num",numball);           
         score.GetComponent<GUIText>().text = currentScore.ToString();

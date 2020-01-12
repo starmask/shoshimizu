@@ -21,7 +21,8 @@ public class Throw : MonoBehaviour
     public GameObject meter2;
     public GameObject arrow2;
     public GameObject cup;
-    public GameObject straw;
+    public GameObject straw;　//mouse element
+    public GameObject rstraw;
     public GameObject eye1;
     public GameObject eye2;
 
@@ -35,6 +36,13 @@ public class Throw : MonoBehaviour
     public GameObject gameOver;
     private float scalef = 0.0025f;
 
+
+    Color colorStart = Color.red;
+    Color colorEnd = Color.blue;
+    float duration = 1.0f;
+    Renderer rend;
+
+
     // Use this for initialization
     void Start()
     {
@@ -45,9 +53,13 @@ public class Throw : MonoBehaviour
         availableShots = Random.Range(3, 8);
         availableShotsGO.GetComponent<GUIText>().text = availableShots.ToString();
 
+        rend = rstraw.GetComponent<Renderer>();
     }
     void FixedUpdate()
     {   
+
+       float lerp = Mathf.PingPong(Time.time, duration) / duration;
+       rend.material.color = Color.Lerp(colorStart, colorEnd, lerp);
         // animation of tapioca cups
         if(cup.transform.position.x>-6f&&cright)
         {

@@ -48,7 +48,7 @@ public class Throw : MonoBehaviour
     }
     void FixedUpdate()
     {   
-        // animation 
+        // animation of tapioca cups
         if(cup.transform.position.x>-6f&&cright)
         {
             straw.transform.localScale += new Vector3(scalef ,scalef,0);

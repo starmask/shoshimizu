@@ -25,11 +25,7 @@ public class Throw : MonoBehaviour
     private float arrowSpeed = 0.2f; //Speed
     private float turnSpeed = 0.2f; //方向スピード
 
-    /*
-    arrowSpeed = Random.Range(0.15f,0.25f);
-    turnSpeed = Random.Range(0.15f,0.25f);
-    */
-    
+
     private bool right = true;
     private bool up = true;
     private bool cright=true;
@@ -40,6 +36,10 @@ public class Throw : MonoBehaviour
     {
         /* Increase Gravity */
         Physics.gravity = new Vector3(0, -20, 0);
+        arrowSpeed = Random.Range(0.15f, 0.25f);
+        turnSpeed = Random.Range(0.15f, 0.25f);
+        availableShots = Random.Range(3, 7);
+        availableShotsGO.GetComponent<GUIText>().text = availableShots.ToString();
 
     }
     void FixedUpdate()

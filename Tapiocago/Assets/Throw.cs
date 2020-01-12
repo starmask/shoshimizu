@@ -21,15 +21,19 @@ public class Throw : MonoBehaviour
     public GameObject meter2;
     public GameObject arrow2;
     public GameObject cup;
+    public GameObject straw;
+    public GameObject eye1;
+    public GameObject eye2;
 
     private float arrowSpeed = 0.2f; //Speed
     private float turnSpeed = 0.2f; //方向スピード
 
-
+    private float scale = 0f;
     private bool right = true;
     private bool up = true;
     private bool cright=true;
     public GameObject gameOver;
+    private float scalef = 0.002f;
 
     // Use this for initialization
     void Start()
@@ -44,10 +48,38 @@ public class Throw : MonoBehaviour
     }
     void FixedUpdate()
     {   
+        // animation 
+        if(cup.transform.position.x>-6f&&cright)
+        {
+            straw.transform.localScale += new Vector3(scalef ,scalef,0);
+            eye1.transform.localScale += new Vector3(scalef ,scalef,0);
+            eye2.transform.localScale += new Vector3(scalef ,scalef,0);
+
+        }
+        else if(cup.transform.position.x>-6f&&!cright)
+        {
+            straw.transform.localScale -= new Vector3(scalef ,scalef ,0);
+            eye1.transform.localScale -= new Vector3(scalef ,scalef,0);
+            eye2.transform.localScale -= new Vector3(scalef ,scalef,0);
+        }
+        else if(cup.transform.position.x<=-6f&&!cright)
+        {
+             straw.transform.localScale += new Vector3(scalef ,scalef ,0);
+            eye1.transform.localScale += new Vector3(scalef ,scalef,0);
+            eye2.transform.localScale += new Vector3(scalef ,scalef,0);
+        }
+        else
+        {
+            straw.transform.localScale -= new Vector3(scalef ,scalef ,0);  
+            eye1.transform.localScale -= new Vector3(scalef ,scalef,0);
+            eye2.transform.localScale -= new Vector3(scalef ,scalef,0);
+        }
+        
         //タピオカコップの動き制御
         if (cup.transform.position.x < 2f && cright)
         {
             cup.transform.position += new Vector3(0.08f,0, 0);
+            
         }
         if (cup.transform.position.x >= 2f)
         {

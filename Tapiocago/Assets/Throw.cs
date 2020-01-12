@@ -123,7 +123,7 @@ public class Throw : MonoBehaviour
         
         
 
-        /* Remove Ball when it hits the floor */
+        /* タピオカインスタンスを消す */
 
         if (ballClone != null && ballClone.transform.position.y <1)
         {
@@ -146,7 +146,7 @@ public class Throw : MonoBehaviour
 
     void restart()
     {
-        //  Application.LoadLevel(Application.loadedLevel);
+        //  次のシーンへスイッチする
         SceneManager.LoadScene(sceneName:"result");
     }
 }

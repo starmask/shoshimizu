@@ -51,8 +51,8 @@ public class Throw : MonoBehaviour
     {
         /* Increase Gravity */
         Physics.gravity = new Vector3(0, -20, 0);
-        arrowSpeed = Random.Range(0.15f, 0.25f);
-        turnSpeed = Random.Range(0.15f, 0.25f);
+        arrowSpeed = Random.Range(0.15f, 0.2f);
+        turnSpeed = Random.Range(0.15f, 0.2f);
         availableShots = Random.Range(3, 8);
         availableShotsGO.GetComponent<GUIText>().text = availableShots.ToString();
 

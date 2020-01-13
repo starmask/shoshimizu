@@ -6,7 +6,7 @@ public class MilkTea : MonoBehaviour
     public GameObject score;
     public GameObject num;
     public AudioClip tapiSound;
-
+    //milktea event
     void OnCollisionEnter()
     {
         GetComponent<AudioSource>().Play();

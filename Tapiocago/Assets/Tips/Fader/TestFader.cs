@@ -15,6 +15,7 @@ public class TestFader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    //バトルのシーンから点数を継承する
     currentScore = PlayerPrefs.GetFloat("score");
     currentnum = PlayerPrefs.GetInt("num");
     score.GetComponent<UnityEngine.UI.Text>().text = currentScore.ToString();

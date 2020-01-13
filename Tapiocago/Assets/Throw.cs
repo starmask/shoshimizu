@@ -21,27 +21,87 @@ public class Throw : MonoBehaviour
     public GameObject meter2;
     public GameObject arrow2;
     public GameObject cup;
+    public GameObject straw;　//mouse element
+    public GameObject rstraw;
+    public GameObject eye1;
+    public GameObject eye2;
+    public GameObject brow1;
+    public GameObject brow2;
+
 
     private float arrowSpeed = 0.2f; //Speed
     private float turnSpeed = 0.2f; //方向スピード
+
+    private float scale = 0f;
     private bool right = true;
     private bool up = true;
     private bool cright=true;
     public GameObject gameOver;
+    private float scalef = 0.0025f;
+
+    //開始色と終了色
+    Color colorStart = Color.red;
+    Color colorEnd = Color.blue;
+    float duration = 1.0f;
+    Renderer rend,rend2,rend3;
+
 
     // Use this for initialization
     void Start()
     {
         /* Increase Gravity */
         Physics.gravity = new Vector3(0, -20, 0);
+        arrowSpeed = Random.Range(0.15f, 0.25f);
+        turnSpeed = Random.Range(0.15f, 0.25f);
+        availableShots = Random.Range(3, 8);
+        availableShotsGO.GetComponent<GUIText>().text = availableShots.ToString();
 
+        //renderを取得
+        rend = rstraw.GetComponent<Renderer>();
+        rend2 = brow1.GetComponent<Renderer>();
+        rend3 = brow2.GetComponent<Renderer>();
     }
     void FixedUpdate()
     {   
+    　　
+      // fading 効果を実現する
+       float lerp = Mathf.PingPong(Time.time, duration) / duration;
+       rend.material.color = Color.Lerp(colorStart, colorEnd, lerp);
+       rend2.material.color = Color.Lerp(colorStart, colorEnd, lerp);
+       rend3.material.color = Color.Lerp(colorStart, colorEnd, lerp);
+
+        // animation of tapioca cups
+        if(cup.transform.position.x>-6f&&cright)
+        {
+            straw.transform.localScale += new Vector3(scalef ,scalef,0);
+            eye1.transform.localScale += new Vector3(scalef ,scalef,0);
+            eye2.transform.localScale += new Vector3(scalef ,scalef,0);
+
+        }
+        else if(cup.transform.position.x>-6f&&!cright)
+        {
+            straw.transform.localScale -= new Vector3(scalef ,scalef ,0);
+            eye1.transform.localScale -= new Vector3(scalef ,scalef,0);
+            eye2.transform.localScale -= new Vector3(scalef ,scalef,0);
+        }
+        else if(cup.transform.position.x<=-6f&&!cright)
+        {
+             straw.transform.localScale += new Vector3(scalef ,scalef ,0);
+            eye1.transform.localScale += new Vector3(scalef ,scalef,0);
+            eye2.transform.localScale += new Vector3(scalef ,scalef,0);
+        }
+        else
+        {
+            straw.transform.localScale -= new Vector3(scalef ,scalef ,0);  
+            eye1.transform.localScale -= new Vector3(scalef ,scalef,0);
+            eye2.transform.localScale -= new Vector3(scalef ,scalef,0);
+        }
+        
         //タピオカコップの動き制御
         if (cup.transform.position.x < 2f && cright)
         {
             cup.transform.position += new Vector3(0.08f,0, 0);
+            
         }
         if (cup.transform.position.x >= 2f)
         {
@@ -117,14 +177,14 @@ public class Throw : MonoBehaviour
         
         
 
-        /* Remove Ball when it hits the floor */
+        /* タピオカインスタンスを消す */
 
         if (ballClone != null && ballClone.transform.position.y <1)
         {
             Destroy(ballClone);
             thrown = false;
             power_decided = false;
-            throwSpeed = new Vector3(0, 26, 40);//Reset perfect shot variable
+            throwSpeed = new Vector3(0, 26, 40);　//最適スピード
 
             /* Check if out of shots */
                 
@@ -140,7 +200,7 @@ public class Throw : MonoBehaviour
 
     void restart()
     {
-        //  Application.LoadLevel(Application.loadedLevel);
+        //  次のシーンへスイッチする
         SceneManager.LoadScene(sceneName:"result");
     }
 }
